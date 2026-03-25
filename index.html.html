@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chamunda Classes</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Poppins', sans-serif; margin:0; background:linear-gradient(to right,#eef2f3,#ffffff); }
+header { background:linear-gradient(45deg,#ff6600,#ff8533); color:white; text-align:center; padding:25px; }
+header h1{margin:0;font-size:32px;}
+nav { background:#222; text-align:center; padding:12px; }
+nav a { color:white; margin:12px; text-decoration:none; font-weight:600; }
+nav a:hover{color:#ff6600;}
+section { padding:25px; }
+.card { background:white; padding:20px; margin:15px 0; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; }
+.card:hover{transform:translateY(-5px);} 
+.btn { background:#ff6600; color:white; padding:12px 18px; text-decoration:none; border:none; border-radius:8px; cursor:pointer; }
+.btn:hover{background:#e65c00;}
+footer { background:#222; color:white; text-align:center; padding:12px; }
+input, textarea { width:100%; padding:10px; margin:6px 0; border-radius:6px; border:1px solid #ccc; }
+.admin-box{background:#fff3e6; padding:15px; border-radius:10px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1 id="title">Chamunda Classes</h1>
+<p id="owner">Kanji Bhai Tulsi Bhai Prajapati</p>
+<p><b>All Subjects | Nursery to Class 12 (Science & Commerce)</b></p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#courses">Courses</a>
+<a href="#features">Why Us</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+<div class="card">
+<h2>Welcome</h2>
+<p id="intro">Best Tuition Classes for Nursery to 12th. All subjects taught with personal attention.</p>
+<p><b>Free Demo Class | Limited Seats Hurry Up!</b></p>
+<button class="btn" onclick="scrollToContact()">Join Now</button>
+</div>
+</section>
+
+<section id="about">
+<div class="card">
+<h2>About Sir</h2>
+<p id="aboutText">Experienced teacher teaching all subjects from basic to advanced level with easy methods.</p>
+</div>
+</section>
+
+<section id="courses">
+<div class="card">
+<h2>Courses</h2>
+<ul>
+<li>Nursery–5: All Subjects</li>
+<li>6–8: All Subjects</li>
+<li>9–10: All Subjects</li>
+<li>11–12 Science: All Subjects</li>
+<li>11–12 Commerce: All Subjects</li>
+</ul>
+</div>
+</section>
+
+<section id="features">
+<div class="card">
+<h2>Why Choose Us</h2>
+<ul>
+<li>✔ Small Batch Size</li>
+<li>✔ Personal Attention</li>
+<li>✔ Weekly Tests</li>
+<li>✔ Doubt Solving</li>
+<li>✔ Study Material</li>
+</ul>
+</div>
+</section>
+
+<section id="gallery">
+<div class="card">
+<h2>Gallery</h2>
+<p>Add your class photos here.</p>
+</div>
+</section>
+
+<section id="contact">
+<div class="card">
+<h2>Contact</h2>
+<p><b>Phone:</b> <span id="phone">9265302050</span></p>
+<a class="btn" href="https://wa.me/919265302050">WhatsApp</a>
+</div>
+
+<div class="card">
+<h2>Admission Form</h2>
+<form onsubmit="sendWhatsApp(event)">
+<input type="text" id="name" placeholder="Name" required>
+<input type="text" id="class" placeholder="Class" required>
+<input type="tel" id="mobile" placeholder="Mobile" required>
+<textarea id="message" placeholder="Message"></textarea>
+<button class="btn" type="submit">Submit</button>
+</form>
+<p id="msg"></p>
+</div>
+
+<div class="card">
+<h2>Location</h2>
+<iframe src="https://www.google.com/maps?q=https://maps.app.goo.gl/Sw7FicMaRdekUi2p7&output=embed" width="100%" height="300" style="border:0;"></iframe>
+<p><b>Address:</b> Chamunda Classes Location (Tap map to open)</p>
+</div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section>
+<div class="card admin-box">
+<h2>Update Website (Only for Sir)</h2>
+<input type="text" id="newTitle" placeholder="Change Class Name">
+<input type="text" id="newOwner" placeholder="Change Sir Name">
+<input type="text" id="newPhone" placeholder="Change Phone">
+<textarea id="newIntro" placeholder="Change Intro"></textarea>
+<button class="btn" onclick="updateSite()">Update Website</button>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Chamunda Classes</p>
+</footer>
+
+<script>
+function sendWhatsApp(event){
+ event.preventDefault();
+ 
+ let name=document.getElementById('name').value;
+ let studentClass=document.getElementById('class').value;
+ let mobile=document.getElementById('mobile').value;
+ let msg=document.getElementById('message').value;
+
+ let text = `New Admission Request:%0AName: ${name}%0AClass: ${studentClass}%0AMobile: ${mobile}%0AMessage: ${msg}`;
+ 
+ let url = `https://wa.me/919265302050?text=${text}`;
+ 
+ window.open(url, '_blank');
+ 
+ document.getElementById('msg').innerText = "Redirecting to WhatsApp...";
+}
+
+function scrollToContact(){
+ document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
+
+function updateSite(){
+ let t=document.getElementById('newTitle').value;
+ let o=document.getElementById('newOwner').value;
+ let p=document.getElementById('newPhone').value;
+ let i=document.getElementById('newIntro').value;
+
+ if(t) document.getElementById('title').innerText=t;
+ if(o) document.getElementById('owner').innerText=o;
+ if(p) document.getElementById('phone').innerText=p;
+ if(i) document.getElementById('intro').innerText=i;
+}
+</script>
+
+</body>
+</html>
